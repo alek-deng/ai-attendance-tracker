@@ -1,0 +1,20 @@
+# Environment files
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.env/
+
+# Node modules (if frontend React)
+node_modules/
+
+# Power BI files
+*.pbix
+
+# OS files
+.DS_Store
+Thumbs.db
