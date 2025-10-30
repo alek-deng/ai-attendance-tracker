@@ -1,4 +1,15 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Date, Time, Boolean, Text, DECIMAL, CheckConstraint, TIMESTAMP
+from sqlalchemy import (
+    Column,
+    Integer,
+    String,
+    ForeignKey,
+    Date,
+    Time,
+    Boolean,
+    Text,
+    DECIMAL,
+    TIMESTAMP,
+)
 from sqlalchemy.orm import relationship, declarative_base
 from datetime import datetime
 
@@ -32,6 +43,7 @@ class Lecturers(Base):
     department = Column(String(100))
     faculty_id = Column(Integer, ForeignKey("faculties.faculty_id"))
     password_hash = Column(String(255), nullable=False)
+    is_admin = Column(Boolean, default=False)  # ✅ Added for admin privileges
 
     faculty = relationship("Faculties", back_populates="lecturers")
     courses = relationship("Courses", back_populates="lecturer")
@@ -105,6 +117,7 @@ class Attendance(Base):
     time_out = Column(Time)
     status = Column(String(20))
     recognized_face = Column(Boolean, default=False)
+    verified_by_admin = Column(Boolean, default=False)  # ✅ Added for manual review
 
     student = relationship("Students", back_populates="attendance")
     course = relationship("Courses", back_populates="attendance")

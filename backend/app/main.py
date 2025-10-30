@@ -2,7 +2,15 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from app.api import auth, attendance, admin  # ✅ Added Admin module
+from fastapi.security import HTTPBearer  # ✅ Added for Bearer token support
+from app.api import (
+    auth,
+    attendance,
+    admin,
+    face_recognition,
+    face_registration,
+    enrollment,  # ✅ Added Enrollment
+)
 
 # ------------------------------------------------------------
 # APP METADATA
@@ -13,9 +21,9 @@ app = FastAPI(
 An AI-powered attendance tracking system integrating facial recognition, 
 CommCare data sync, and Power BI dashboards.
 This API supports authentication, attendance management, 
-and admin-level analytics and controls.
+enrollment control, and admin-level analytics.
 """,
-    version="1.1.0",
+    version="1.4.0",
     contact={
         "name": "AI Attendance Tracker Dev Team",
         "email": "support@aiattendance.com",
@@ -49,7 +57,10 @@ app.add_middleware(
 # ------------------------------------------------------------
 app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 app.include_router(attendance.router, prefix="/attendance", tags=["Attendance"])
-app.include_router(admin.router, prefix="/admin", tags=["Admin"])  # ✅ Added Admin routes
+app.include_router(admin.router, prefix="/admin", tags=["Admin"])
+app.include_router(face_recognition.router, prefix="/face", tags=["Facial Recognition"])
+app.include_router(face_registration.router, prefix="/register", tags=["Face Registration"])
+app.include_router(enrollment.router, prefix="/enrollment", tags=["Enrollment"])  # ✅ Added Enrollment routes
 
 # ------------------------------------------------------------
 # GLOBAL EXCEPTION HANDLER (clean and standardized responses)
@@ -76,6 +87,6 @@ def read_root():
     return {
         "message": "✅ Welcome to the AI Attendance Tracker API",
         "status": "running",
-        "docs_url": "/docs",
-        "version": "1.1.0"
+        "version": "1.4.0",
+        "docs_url": "/docs"
     }
