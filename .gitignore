@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 venv/
@@ -69,3 +70,25 @@ htmlcov/
 !faces/.gitkeep
 !images/faces/.gitkeep
 
+=======
+# Environment files
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.env/
+
+# Node modules (if frontend React)
+node_modules/
+
+# Power BI files
+*.pbix
+
+# OS files
+.DS_Store
+Thumbs.db
+>>>>>>> ef04ec9d26b123957c783d82388e2f72e42e1a3c
