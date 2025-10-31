@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Face images (keep structure but ignore actual images)
+faces/*.jpg
+faces/*.jpeg
+faces/*.png
+images/faces/*.jpg
+images/faces/*.jpeg
+images/faces/*.png
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build outputs
+*.zip
+*.tar.gz
+
+# Power BI (if needed)
+*.pbix
+
+# Keep folder structure
+!faces/.gitkeep
+!images/faces/.gitkeep
+
